@@ -1,0 +1,33 @@
+<hibernate-configuration>
+    <session-factory>
+        <!-- Driver de conexión a Derby -->
+        <property name="hibernate.connection.driver_class">
+            org.apache.derby.jdbc.EmbeddedDriver
+        </property>
+
+        <!-- URL de conexión -->
+        <property name="hibernate.connection.url">
+            jdbc:derby:database/monedero-virtual;create=true;territory=es_ES;collation=TERRITORY_BASED
+        </property>
+
+
+        <!-- Dialecto de Derby para Hibernate -->
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.DerbyDialect
+        </property>
+
+        <!-- Mostrar SQL en consola -->
+        <property name="hibernate.show_sql">true</property>
+
+        <!-- Actualización automática del esquema -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- Mapping de las clases -->
+        <mapping class="ec.edu.epn.monederovirtual.model.Cuenta"/>
+        <mapping class="ec.edu.epn.monederovirtual.model.Ingreso"/>
+        <mapping class="ec.edu.epn.monederovirtual.model.Egreso"/>
+        <mapping class="ec.edu.epn.monederovirtual.model.Transferencia"/>
+        <mapping class="ec.edu.epn.monederovirtual.model.Usuario"/>
+<!--        <mapping class="ec.edu.epn.monederovirtual.model.Etiqueta"/>-->
+    </session-factory>
+</hibernate-configuration>
