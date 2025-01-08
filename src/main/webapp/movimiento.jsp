@@ -24,7 +24,7 @@
         </form>
     </div>
 </header>
-<main class="ds-flex gap-24">
+<main class="ds-flex">
     <nav class="sidemenu bg-light">
         <img src="images/wallet-512px.png" alt="wallet">
         <span class="text-dark font-primary text-center pd-b-16">Chaucherita<br>Web</span>
@@ -42,6 +42,14 @@
                     <input type="hidden" name="route" value="crearCuenta">
                     <button class="menu-button pd-8" type="submit">
                         <i class="fa-solid fa-plus text-xl"></i> Crear Cuenta
+                    </button>
+                </form>
+            </li>
+            <li>
+                <form action="homeServlet" method="get">
+                    <input type="hidden" name="route" value="verMovimientos">
+                    <button class="menu-button pd-8" type="submit">
+                        <i class="fa-regular fa-eye text-xl"></i> Movimientos
                     </button>
                 </form>
             </li>

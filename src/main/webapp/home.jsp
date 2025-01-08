@@ -25,7 +25,7 @@
         </form>
     </div>
 </header>
-<main class="ds-flex jc-sb gap-24">
+<main class="ds-flex jc-sb">
     <nav class="sidemenu bg-light">
         <img src="images/wallet-512px.png" alt="wallet">
         <span class="text-dark font-primary text-center pd-b-16">Chaucherita<br>Web</span>
@@ -50,7 +50,7 @@
                 <form action="homeServlet" method="get">
                     <input type="hidden" name="route" value="verMovimientos">
                     <button class="menu-button pd-8" type="submit">
-                        <i class="fa-solid fa-plus text-xl"></i> Ver Movimientos
+                        <i class="fa-regular fa-eye text-xl"></i> Movimientos
                     </button>
                 </form>
             </li>
@@ -58,7 +58,7 @@
     </nav>
     <!-- Sección principal -->
     <div class="main-content">
-        <section class="font-primary pd-24">
+        <section class="font-primary pd-t-40 pd-x-40">
             <h2 class="font-primary text-dark">Mis Cuentas</h2>
             <!-- Campo de entrada para el filtro -->
             <div class="pd-y-16">
@@ -95,9 +95,7 @@
                 </table>
             </div>
             <h2 class="font-primary text-dark">Movimientos Recientes</h2>
-            <div>
-                Filtro
-            </div>
+
             <div class="font-primary">
                 <table class="table border-light mg-y-16">
                     <tr>

@@ -15,9 +15,27 @@
 .ds-flex-column { display: flex; flex-direction: column; }
 .flex-start { align-items: flex-start; }
 
+/* Flex properties for children */
+.flex-1 { flex: 1 1 auto; }
+.flex-2 { flex: 2 1 auto; }
+.flex-auto { flex: 1 1 auto; }
+.flex-initial { flex: 0 1 auto; }
+.flex-none { flex: 0 0 auto; }
+
+/* Flex basis */
+.basis-0 { flex-basis: 0; }
+.basis-auto { flex-basis: auto; }
+.basis-50 { flex-basis: 50%; }
+.basis-100 { flex-basis: 100%; }
+
+/* Gap for spacing between items */
+.gap-4 { gap: 4px; }
 .gap-8 { gap: 8px; }
+.gap-12 { gap: 12px; }
 .gap-16 { gap: 16px; }
+.gap-20 { gap: 20px; }
 .gap-24 { gap: 24px; }
+
 
 /* Paddings */
 .pd-0 { padding: 0px; }
@@ -46,6 +64,16 @@
 .pd-l-24 { padding-left: 24px; }
 .pd-r-24 { padding-right: 24px; }
 
+.pd-t-32 { padding-top: 32px; }
+.pd-b-32 { padding-bottom: 32px; }
+.pd-l-32 { padding-left: 32px; }
+.pd-r-32 { padding-right: 32px; }
+
+.pd-t-40 { padding-top: 40px; }
+.pd-b-40 { padding-bottom: 40px; }
+.pd-l-40 { padding-left: 40px; }
+.pd-r-40 { padding-right: 40px; }
+
 /* Paddings horizontales y verticales */
 .pd-y-8 { padding-top: 8px; padding-bottom: 8px; }
 .pd-x-8 { padding-left: 8px; padding-right: 8px; }
@@ -55,6 +83,12 @@
 
 .pd-y-24 { padding-top: 24px; padding-bottom: 24px; }
 .pd-x-24 { padding-left: 24px; padding-right: 24px; }
+
+.pd-y-32 { padding-top: 32px; padding-bottom: 32px; }
+.pd-x-32 { padding-left: 32px; padding-right: 32px; }
+
+.pd-y-40 { padding-top: 40px; padding-bottom: 40px; }
+.pd-x-40 { padding-left: 40px; padding-right: 40px; }
 
 /* Margins */
 .mg-0 { margin: 0px; }

@@ -78,7 +78,7 @@ public class HomeServlet extends HttpServlet {
                 .toList();
 
         List<Movimiento> top10Movimientos = movimientosOrdenados.size() > 10
-                ? movimientosOrdenados.subList(0, 10)
+                ? movimientosOrdenados.subList(0, 5)
                 : movimientosOrdenados;
 
         req.setAttribute("cuentas", cuentas);
@@ -122,6 +122,6 @@ public class HomeServlet extends HttpServlet {
         req.setAttribute("cuentas", cuentas);
         req.setAttribute("movimientos", movimientos);
 
-        req.getRequestDispatcher("home.jsp").forward(req, resp);
+        req.getRequestDispatcher("verMovimientos.jsp").forward(req, resp);
     }
 }
