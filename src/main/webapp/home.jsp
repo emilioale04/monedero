@@ -8,6 +8,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/home.css">
+    <script src="js/home.js"></script>
     <link rel="icon" type="image/png" href="images/dollar.png">
     <script src="https://kit.fontawesome.com/d2aae01839.js" crossorigin="anonymous"></script>
 </head>
@@ -45,17 +46,27 @@
                     </button>
                 </form>
             </li>
+            <li>
+                <form action="homeServlet" method="get">
+                    <input type="hidden" name="route" value="verMovimientos">
+                    <button class="menu-button pd-8" type="submit">
+                        <i class="fa-solid fa-plus text-xl"></i> Ver Movimientos
+                    </button>
+                </form>
+            </li>
         </ul>
     </nav>
     <!-- Sección principal -->
     <div class="main-content">
         <section class="font-primary pd-24">
             <h2 class="font-primary text-dark">Mis Cuentas</h2>
-            <div>
-                Filtro
+            <!-- Campo de entrada para el filtro -->
+            <div class="pd-y-16">
+                <label for="filtro-cuentas" class="text-dark">Filtrar por nombre:</label>
+                <input type="text" id="filtro-cuentas" class="input text-base" placeholder="Buscar cuenta...">
             </div>
             <div>
-                <table class="table border-light mg-y-16">
+                <table id="tabla-cuentas" class="table border-light mg-y-16">
                     <thead>
                     <tr class="bg-light text-dark">
                         <th class="pd-8">ID</th>

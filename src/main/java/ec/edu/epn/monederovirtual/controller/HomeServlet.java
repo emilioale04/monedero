@@ -12,7 +12,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @WebServlet("/homeServlet")
 public class HomeServlet extends HttpServlet {
@@ -52,6 +54,8 @@ public class HomeServlet extends HttpServlet {
             case "realizarMovimiento":
                 this.realizarMovimiento(req, resp);
                 break;
+            case "verMovimientos":
+                this.verMovimientos(req, resp);
             default:
                 break;
         }
@@ -69,8 +73,16 @@ public class HomeServlet extends HttpServlet {
 
         movimientos.forEach(movimiento -> movimiento.formatearFecha("dd/MM/yyyy"));
 
+        List<Movimiento> movimientosOrdenados = movimientos.stream()
+                .sorted(Comparator.comparing(Movimiento::getFecha).reversed()) // Orden descendente por fecha
+                .toList();
+
+        List<Movimiento> top10Movimientos = movimientosOrdenados.size() > 10
+                ? movimientosOrdenados.subList(0, 10)
+                : movimientosOrdenados;
+
         req.setAttribute("cuentas", cuentas);
-        req.setAttribute("movimientos", movimientos);
+        req.setAttribute("movimientos", top10Movimientos);
 
         req.getRequestDispatcher("home.jsp").forward(req, resp);
     }
@@ -85,10 +97,31 @@ public class HomeServlet extends HttpServlet {
 
         Cuenta cuenta = cuentaDAO.findById(cuentaId);
         List<Cuenta> cuentas = cuentaDAO.findByUsuario(usuario);
-        cuentas.remove(cuenta);
+
+        req.setAttribute("cuenta", cuenta);
+        req.setAttribute("cuentas", cuentas);
+        req.getRequestDispatcher("movimiento.jsp").forward(req, resp);
+    }
+
+    private void verMovimientos(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+
+        List<Cuenta> cuentas = cuentaDAO.findByUsuario(usuario);
+
+        List<Movimiento> movimientos = new ArrayList<>();
+        movimientos.addAll(ingresoDAO.findByUsuario(usuario));
+        movimientos.addAll(egresoDAO.findByUsuario(usuario));
+        movimientos.addAll(transferenciaDAO.findByUsuario(usuario));
+
+        movimientos.forEach(movimiento -> movimiento.formatearFecha("dd/MM/yyyy"));
+
+        List<Movimiento> movimientosOrdenados = movimientos.stream()
+                .sorted(Comparator.comparing(Movimiento::getFecha).reversed()) // Orden descendente por fecha
+                .toList();
 
         req.setAttribute("cuentas", cuentas);
-        req.setAttribute("cuenta", cuenta);
-        req.getRequestDispatcher("movimiento.jsp").forward(req, resp);
+        req.setAttribute("movimientos", movimientos);
+
+        req.getRequestDispatcher("home.jsp").forward(req, resp);
     }
 }

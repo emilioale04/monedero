@@ -82,8 +82,7 @@ public class MovimientoServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        req.setAttribute("cuentaId", cuentaId);
-        req.getRequestDispatcher("homeServlet?route=realizarMovimiento").forward(req, resp);
+        resp.sendRedirect("homeServlet");
     }
 
     private void egresar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -106,17 +105,16 @@ public class MovimientoServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        req.setAttribute("cuentaId", cuentaId);
-        req.getRequestDispatcher("homeServlet?route=realizarMovimiento").forward(req, resp);
+        resp.sendRedirect("homeServlet");
     }
 
     private void transferir(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int cuentaOrigenId = Integer.parseInt(req.getParameter("cuentaOrigenId").trim());
+        int cuentaId = Integer.parseInt(req.getParameter("cuentaOrigenId").trim());
         int cuentaDestinoId = Integer.parseInt(req.getParameter("cuentaDestinoId").trim());
         double valor = Double.parseDouble(req.getParameter("valor").trim());
         String concepto = req.getParameter("concepto").trim();
 
-        Cuenta cuentaOrigen = cuentaDAO.findById(cuentaOrigenId);
+        Cuenta cuentaOrigen = cuentaDAO.findById(cuentaId);
         Cuenta cuentaDestino = cuentaDAO.findById(cuentaDestinoId);
         Transferencia transferencia = new Transferencia(cuentaOrigen, cuentaDestino, valor, concepto);
         transferencia.setFecha(LocalDateTime.now());
@@ -133,8 +131,6 @@ public class MovimientoServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        req.setAttribute("cuentaId", cuentaOrigenId);
-        req.getRequestDispatcher("homeServlet?route=realizarMovimiento").forward(req, resp);
+        resp.sendRedirect("homeServlet");
     }
 }

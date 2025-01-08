@@ -44,30 +44,6 @@
                     </button>
                 </form>
             </li>
-            <li>
-                <form action="homeServlet" method="get">
-                    <input type="hidden" name="route" value="ingresar">
-                    <button class="menu-button pd-8" type="submit">
-                        <i class="fa-solid fa-arrow-trend-up text-xl"></i> Ingreso
-                    </button>
-                </form>
-            </li>
-            <li>
-                <form action="homeServlet" method="get">
-                    <input type="hidden" name="route" value="egresar">
-                    <button class="menu-button pd-8" type="submit">
-                        <i class="fa-solid fa-arrow-trend-down text-xl"></i> Egreso
-                    </button>
-                </form>
-            </li>
-            <li>
-                <form action="homeServlet" method="get">
-                    <input type="hidden" name="route" value="transferir">
-                    <button class="menu-button pd-8" type="submit">
-                        <i class="fa-solid fa-arrow-right-arrow-left text-xl"></i> Transferencia
-                    </button>
-                </form>
-            </li>
         </ul>
     </nav>
     <div class="main-content pd-24">
